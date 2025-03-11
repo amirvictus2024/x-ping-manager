@@ -554,6 +554,73 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
                 config.MESSAGES["start"],
                 reply_markup=InlineKeyboardMarkup(keyboard)
             )
+        
+        # Poll Management Actions
+        elif action == "create_poll":
+            from bot.poll_keyboards import create_poll_management_keyboard
+            keyboard = create_poll_management_keyboard()
+            await query.edit_message_text(
+                "📊 مدیریت نظرسنجی - لطفاً یک گزینه را انتخاب کنید:",
+                reply_markup=InlineKeyboardMarkup(keyboard)
+            )
+        elif action == "poll_templates":
+            from bot.poll_keyboards import create_poll_templates_keyboard
+            keyboard = create_poll_templates_keyboard()
+            await query.edit_message_text(
+                "📝 قالب‌های نظرسنجی - لطفاً یک قالب را انتخاب کنید:",
+                reply_markup=InlineKeyboardMarkup(keyboard)
+            )
+        elif action == "poll_settings":
+            from bot.poll_keyboards import create_poll_settings_keyboard
+            keyboard = create_poll_settings_keyboard()
+            await query.edit_message_text(
+                "⚙️ تنظیمات نظرسنجی - لطفاً گزینه مورد نظر را انتخاب کنید:",
+                reply_markup=InlineKeyboardMarkup(keyboard)
+            )
+        elif action == "back_to_poll_management":
+            from bot.poll_keyboards import create_poll_management_keyboard
+            keyboard = create_poll_management_keyboard()
+            await query.edit_message_text(
+                "📊 مدیریت نظرسنجی - لطفاً یک گزینه را انتخاب کنید:",
+                reply_markup=InlineKeyboardMarkup(keyboard)
+            )
+        
+        # Welcome Message Actions
+        elif action == "welcome_message":
+            from bot.welcome_keyboards import create_welcome_management_keyboard
+            keyboard = create_welcome_management_keyboard()
+            await query.edit_message_text(
+                "👋 مدیریت پیام خوش‌آمدگویی - لطفاً یک گزینه را انتخاب کنید:",
+                reply_markup=InlineKeyboardMarkup(keyboard)
+            )
+        elif action == "welcome_templates":
+            from bot.welcome_keyboards import create_welcome_templates_keyboard
+            keyboard = create_welcome_templates_keyboard()
+            await query.edit_message_text(
+                "📝 قالب‌های پیام خوش‌آمدگویی - لطفاً یک قالب را انتخاب کنید:",
+                reply_markup=InlineKeyboardMarkup(keyboard)
+            )
+        elif action == "welcome_settings":
+            from bot.welcome_keyboards import create_welcome_settings_keyboard
+            keyboard = create_welcome_settings_keyboard()
+            await query.edit_message_text(
+                "⚙️ تنظیمات پیام خوش‌آمدگویی - لطفاً گزینه مورد نظر را انتخاب کنید:",
+                reply_markup=InlineKeyboardMarkup(keyboard)
+            )
+        elif action == "welcome_buttons":
+            from bot.welcome_keyboards import create_welcome_buttons_keyboard
+            keyboard = create_welcome_buttons_keyboard()
+            await query.edit_message_text(
+                "🔗 مدیریت دکمه‌های پیام خوش‌آمدگویی - لطفاً گزینه مورد نظر را انتخاب کنید:",
+                reply_markup=InlineKeyboardMarkup(keyboard)
+            )
+        elif action == "back_to_welcome_management":
+            from bot.welcome_keyboards import create_welcome_management_keyboard
+            keyboard = create_welcome_management_keyboard()
+            await query.edit_message_text(
+                "👋 مدیریت پیام خوش‌آمدگویی - لطفاً یک گزینه را انتخاب کنید:",
+                reply_markup=InlineKeyboardMarkup(keyboard)
+            )
         elif action == "channel_management":
             from bot.keyboards import create_channel_management_keyboard
             keyboard = create_channel_management_keyboard()

@@ -10,15 +10,12 @@ logger = logging.getLogger(__name__)
 def create_main_menu_keyboard():
     """Create the main menu keyboard with all admin functions"""
     keyboard = [
-        # Channel Management Row
+        # Channel & Group Management Row (grouped together)
         [
             InlineKeyboardButton(
-                "🔄 مدیریت کانال ها",
+                "📢 مدیریت کانال ها",
                 callback_data=json.dumps({"action": "channel_management"})
             ),
-        ],
-        # Group Management Row
-        [
             InlineKeyboardButton(
                 "👥 مدیریت گروه ها",
                 callback_data=json.dumps({"action": "group_management"})
@@ -34,18 +31,15 @@ def create_main_menu_keyboard():
         # Scheduling Row
         [
             InlineKeyboardButton(
-                "🕒 زمان‌بندی پیام ها",
+                "🕒 زمان‌بندی پیام",
                 callback_data=json.dumps({"action": "schedule_management"})
             ),
-        ],
-        # Auto Post Row
-        [
             InlineKeyboardButton(
                 "🔄 پست خودکار",
                 callback_data=json.dumps({"action": "autopost_management"})
             ),
         ],
-        # Other Features Row
+        # Interactive Features Row
         [
             InlineKeyboardButton(
                 "📊 نظرسنجی",
@@ -56,11 +50,22 @@ def create_main_menu_keyboard():
                 callback_data=json.dumps({"action": "welcome_message"})
             ),
         ],
+        # Statistics & Reports Row
+        [
+            InlineKeyboardButton(
+                "📈 آمار و گزارش",
+                callback_data=json.dumps({"action": "stats_reports"})
+            ),
+        ],
         # Admin Row
         [
             InlineKeyboardButton(
                 "👤 مدیریت ادمین ها",
                 callback_data=json.dumps({"action": "admin_management"})
+            ),
+            InlineKeyboardButton(
+                "⚙️ تنظیمات",
+                callback_data=json.dumps({"action": "settings"})
             ),
         ],
     ]
@@ -69,24 +74,50 @@ def create_main_menu_keyboard():
 def create_channel_management_keyboard():
     """Create keyboard for channel management options"""
     keyboard = [
+        # Add/Remove Channel Row
         [
             InlineKeyboardButton(
                 "➕ افزودن کانال",
                 callback_data=json.dumps({"action": "add_channel"})
             ),
-        ],
-        [
             InlineKeyboardButton(
                 "➖ حذف کانال",
                 callback_data=json.dumps({"action": "remove_channel"})
             ),
         ],
+        # List Channels
         [
             InlineKeyboardButton(
                 "📋 لیست کانال ها",
                 callback_data=json.dumps({"action": "list_channels"})
             ),
         ],
+        # Channel Statistics
+        [
+            InlineKeyboardButton(
+                "📊 آمار کانال",
+                callback_data=json.dumps({"action": "channel_stats"})
+            ),
+        ],
+        # Advanced Channel Settings
+        [
+            InlineKeyboardButton(
+                "🎨 قالب پست کانال",
+                callback_data=json.dumps({"action": "channel_post_template"})
+            ),
+            InlineKeyboardButton(
+                "🔗 پیوند کانال‌ها",
+                callback_data=json.dumps({"action": "link_channels"})
+            ),
+        ],
+        # Member Management
+        [
+            InlineKeyboardButton(
+                "👥 مدیریت اعضا",
+                callback_data=json.dumps({"action": "channel_members"})
+            ),
+        ],
+        # Back Button
         [
             InlineKeyboardButton(
                 "🔙 بازگشت به منوی اصلی",
@@ -99,24 +130,54 @@ def create_channel_management_keyboard():
 def create_group_management_keyboard():
     """Create keyboard for group management options"""
     keyboard = [
+        # Add/Remove Group Row
         [
             InlineKeyboardButton(
                 "➕ افزودن گروه",
                 callback_data=json.dumps({"action": "add_group"})
             ),
-        ],
-        [
             InlineKeyboardButton(
                 "➖ حذف گروه",
                 callback_data=json.dumps({"action": "remove_group"})
             ),
         ],
+        # List Groups
         [
             InlineKeyboardButton(
                 "📋 لیست گروه ها",
                 callback_data=json.dumps({"action": "list_groups"})
             ),
         ],
+        # Group Admin Management
+        [
+            InlineKeyboardButton(
+                "👮 مدیریت ادمین‌های گروه",
+                callback_data=json.dumps({"action": "group_admins"})
+            ),
+        ],
+        # Group Rules & Settings
+        [
+            InlineKeyboardButton(
+                "📝 قوانین گروه",
+                callback_data=json.dumps({"action": "group_rules"})
+            ),
+            InlineKeyboardButton(
+                "⚙️ تنظیمات گروه",
+                callback_data=json.dumps({"action": "group_settings"})
+            ),
+        ],
+        # Member Management & Statistics
+        [
+            InlineKeyboardButton(
+                "👥 مدیریت اعضا",
+                callback_data=json.dumps({"action": "group_members"})
+            ),
+            InlineKeyboardButton(
+                "📊 آمار گروه",
+                callback_data=json.dumps({"action": "group_stats"})
+            ),
+        ],
+        # Back Button
         [
             InlineKeyboardButton(
                 "🔙 بازگشت به منوی اصلی",
@@ -129,24 +190,50 @@ def create_group_management_keyboard():
 def create_schedule_management_keyboard():
     """Create keyboard for scheduling options"""
     keyboard = [
+        # Add New Schedule Row
         [
             InlineKeyboardButton(
                 "➕ زمان‌بندی پیام جدید",
                 callback_data=json.dumps({"action": "new_schedule"})
             ),
         ],
+        # Schedule List & Cancel Row
         [
             InlineKeyboardButton(
-                "📋 لیست پیام های زمان‌بندی شده",
+                "📋 لیست پیام‌ها",
                 callback_data=json.dumps({"action": "schedule_list"})
             ),
-        ],
-        [
             InlineKeyboardButton(
                 "➖ لغو زمان‌بندی",
                 callback_data=json.dumps({"action": "cancel_schedule"})
             ),
         ],
+        # Schedule Types Row
+        [
+            InlineKeyboardButton(
+                "🕒 زمان دقیق",
+                callback_data=json.dumps({"action": "schedule_exact_time"})
+            ),
+            InlineKeyboardButton(
+                "⏰ با تاخیر",
+                callback_data=json.dumps({"action": "schedule_with_delay"})
+            ),
+        ],
+        # Schedule Templates Row
+        [
+            InlineKeyboardButton(
+                "📝 قالب‌های زمان‌بندی",
+                callback_data=json.dumps({"action": "schedule_templates"})
+            ),
+        ],
+        # Schedule Calendar View Row
+        [
+            InlineKeyboardButton(
+                "📅 نمای تقویم",
+                callback_data=json.dumps({"action": "schedule_calendar_view"})
+            ),
+        ],
+        # Back Button
         [
             InlineKeyboardButton(
                 "🔙 بازگشت به منوی اصلی",
@@ -159,24 +246,54 @@ def create_schedule_management_keyboard():
 def create_autopost_management_keyboard():
     """Create keyboard for autopost options"""
     keyboard = [
+        # Add New Autopost
         [
             InlineKeyboardButton(
                 "➕ تنظیم پست خودکار",
                 callback_data=json.dumps({"action": "new_autopost"})
             ),
         ],
+        # List & Delete Row
         [
             InlineKeyboardButton(
-                "📋 لیست پست های خودکار",
+                "📋 لیست پست‌ها",
                 callback_data=json.dumps({"action": "autopost_list"})
             ),
-        ],
-        [
             InlineKeyboardButton(
                 "➖ حذف پست خودکار",
                 callback_data=json.dumps({"action": "delete_autopost"})
             ),
         ],
+        # Autopost Types Row
+        [
+            InlineKeyboardButton(
+                "🔄 روزانه",
+                callback_data=json.dumps({"action": "daily_autopost"})
+            ),
+            InlineKeyboardButton(
+                "📅 هفتگی",
+                callback_data=json.dumps({"action": "weekly_autopost"})
+            ),
+        ],
+        # Periodic Row
+        [
+            InlineKeyboardButton(
+                "⏱️ ساعتی",
+                callback_data=json.dumps({"action": "hourly_autopost"})
+            ),
+            InlineKeyboardButton(
+                "🔍 هوشمند",
+                callback_data=json.dumps({"action": "smart_autopost"})
+            ),
+        ],
+        # Autopost Templates
+        [
+            InlineKeyboardButton(
+                "📝 قالب‌های پست خودکار",
+                callback_data=json.dumps({"action": "autopost_templates"})
+            ),
+        ],
+        # Back Button
         [
             InlineKeyboardButton(
                 "🔙 بازگشت به منوی اصلی",
@@ -189,24 +306,39 @@ def create_autopost_management_keyboard():
 def create_admin_management_keyboard():
     """Create keyboard for admin management"""
     keyboard = [
+        # Add/Remove Admin Row
         [
             InlineKeyboardButton(
                 "➕ افزودن ادمین",
                 callback_data=json.dumps({"action": "add_admin"})
             ),
-        ],
-        [
             InlineKeyboardButton(
                 "➖ حذف ادمین",
                 callback_data=json.dumps({"action": "remove_admin"})
             ),
         ],
+        # List Admins
         [
             InlineKeyboardButton(
                 "📋 لیست ادمین ها",
                 callback_data=json.dumps({"action": "list_admins"})
             ),
         ],
+        # Admin Permissions
+        [
+            InlineKeyboardButton(
+                "🔐 سطوح دسترسی",
+                callback_data=json.dumps({"action": "admin_permissions"})
+            ),
+        ],
+        # Activity Log
+        [
+            InlineKeyboardButton(
+                "📊 آمار فعالیت‌ها",
+                callback_data=json.dumps({"action": "admin_activity_log"})
+            ),
+        ],
+        # Back Button
         [
             InlineKeyboardButton(
                 "🔙 بازگشت به منوی اصلی",
