@@ -972,15 +972,15 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
             
             # Ask for message text
             keyboard = build_inline_keyboard([
-                {"text": "Add Inline Buttons", "callback_data": json.dumps({"action": "add_buttons"})}
+                {"text": "افزودن دکمه‌های شیشه‌ای", "callback_data": json.dumps({"action": "add_buttons"})}
             ])
             
             conf = config.init_config()
             target_name = (conf["channels"] if target_type == "channel" else conf["groups"]).get(str(target_id), "Unknown")
             
             await query.edit_message_text(
-                f"You'll send a message to {target_type} '{target_name}'.\n"
-                "Now send me the message text, or click below to add inline buttons.",
+                f"شما در حال ارسال پیام به {target_type} '{target_name}' هستید.\n"
+                "اکنون متن پیام را ارسال کنید، یا برای افزودن دکمه‌های شیشه‌ای روی دکمه زیر کلیک کنید.",
                 reply_markup=InlineKeyboardMarkup(keyboard)
             )
         
