@@ -28,7 +28,7 @@ def init_config():
         with open(CONFIG_FILE, 'w') as f:
             json.dump(DEFAULT_CONFIG, f, indent=4)
         return DEFAULT_CONFIG
-    
+
     # Load existing config
     try:
         with open(CONFIG_FILE, 'r') as f:
@@ -88,4 +88,34 @@ MESSAGES = {
     "autopost_added": "✅ ارسال خودکار پیام تنظیم شد!",
     "autopost_removed": "✅ پست خودکار حذف شد!",
     "error": "❌ خطایی رخ داده است: {}"
+}
+
+# Default messages
+DEFAULT_MESSAGES = {
+    "start": "به ربات مدیریت کانال خوش آمدید!\n\nاز دکمه‌های زیر برای مدیریت استفاده کنید:",
+    "help": "این ربات به شما در مدیریت کانال‌ها و گروه‌های تلگرام کمک می‌کند.\n\nدستورات موجود:\n"
+            "/addchannel <شناسه> <نام> - افزودن کانال\n"
+            "/delchannel - حذف کانال\n"
+            "/channels - لیست کانال‌ها\n"
+            "/addgroup <شناسه> <نام> - افزودن گروه\n"
+            "/delgroup - حذف گروه\n"
+            "/groups - لیست گروه‌ها\n"
+            "/send - ارسال پیام\n"
+            "/schedule - زمان‌بندی پیام\n"
+            "/schedulelist - لیست پیام‌های زمان‌بندی شده\n"
+            "/cancelschedule - لغو پیام زمان‌بندی شده\n"
+            "/autopost - تنظیم پست خودکار\n"
+            "/autopostlist - لیست پست‌های خودکار\n"
+            "/delautopost - حذف پست خودکار\n"
+            "/welcome - تنظیم پیام خوش‌آمدگویی برای گروه\n"
+            "/poll - ایجاد نظرسنجی\n"
+            "/getmembers - دریافت لیست اعضای کانال یا گروه\n"
+            "/addadmin <شناسه کاربر> - افزودن مدیر جدید",
+    "error": "خطایی رخ داد: {}",
+    "no_channels": "هنوز هیچ کانالی اضافه نشده است.",
+    "channel_added": "کانال با موفقیت اضافه شد!",
+    "channel_removed": "کانال با موفقیت حذف شد!",
+    "no_groups": "هنوز هیچ گروهی اضافه نشده است.",
+    "group_added": "گروه با موفقیت اضافه شد!",
+    "group_removed": "گروه با موفقیت حذف شد!",
 }
