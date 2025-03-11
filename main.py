@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python3
 """
 Telegram Channel Management Bot
@@ -5,7 +6,6 @@ A comprehensive bot for managing Telegram channels with features like scheduling
 inline buttons, and multi-channel support.
 """
 import logging
-import os
 from bot.bot import start_bot
 
 # Configure logging
@@ -17,11 +17,8 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 if __name__ == "__main__":
-    # Check if the token is available in the environment
-    token = os.getenv("TELEGRAM_BOT_TOKEN")
-    if not token:
-        logger.error("No TELEGRAM_BOT_TOKEN found in environment variables!")
-        exit(1)
+    # توکن ربات تلگرام به صورت مستقیم در فایل
+    token = "8069263840:AAF2JTFJl6cfo7z1rU_CegYnCNJH6bLXcg0"  # توکن ربات شما
     
     # Start the bot
     logger.info("Starting Channel Management Bot...")
