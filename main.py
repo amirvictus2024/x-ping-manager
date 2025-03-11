@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 if __name__ == "__main__":
     # Check if the token is available in the environment
-    token = os.getenv("TELEGRAM_BOT_TOKEN")
+    token = os.getenv("8069263840:AAF2JTFJl6cfo7z1rU_CegYnCNJH6bLXcg0")
     if not token:
         logger.error("No TELEGRAM_BOT_TOKEN found in environment variables!")
         exit(1)
